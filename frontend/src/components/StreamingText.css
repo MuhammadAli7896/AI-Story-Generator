@@ -1,0 +1,64 @@
+.streaming-text-container {
+    position: relative;
+}
+
+.streaming-text {
+    line-height: 1.6;
+    margin: 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+.cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.streaming-controls {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.control-btn {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 4px;
+    font-size: 16px;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.control-btn.paused {
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--primary-color, #4a6fa5);
+}
+
+.control-btn.muted {
+    background: rgba(255, 0, 0, 0.1);
+    color: var(--error-color, #f44336);
+}
