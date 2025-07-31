@@ -9,7 +9,10 @@ An interactive story generation application that creates dynamic, branching narr
 - Theme-based story generation (pirates, space, medieval, etc.)
 - Dynamic branching narratives with multiple endings
 - Win/lose story endings for game-like experience
-- Asynchronous story generation with status updates
+- Asynchronous story generation with job tracking
+- Session-based story persistence
+- Real-time generation status updates
+- Error handling and recovery
 
 ### User Experience
 - Real-time text streaming with typewriter effect
@@ -21,10 +24,58 @@ An interactive story generation application that creates dynamic, branching narr
 
 ### Technical Features
 - RESTful API integration with real-time status polling
-- Persistent story state management
-- Responsive and modern user interface
+- Asynchronous story generation with job tracking
+- Session-based story management
 - Cross-browser text-to-speech compatibility
 - Efficient story tree navigation system
+- SQLite database with SQLAlchemy ORM
+
+### Story Generation Process
+- Create a story job with theme and session ID
+- Asynchronous processing with real-time status updates
+- Poll job status until completion
+- Retrieve generated story using story ID
+- Navigate through story nodes based on user choices
+
+## 📊 Database Models
+
+### Story Model
+```sql
+stories
+├── id (Primary Key)
+├── title (String, Indexed)
+├── session_id (String, Indexed)
+└── created_at (DateTime)
+```
+Represents a complete story with multiple nodes and branching paths.
+
+### StoryNode Model
+```sql
+story_nodes
+├── id (Primary Key)
+├── story_id (Foreign Key → stories.id)
+├── content (String)
+├── is_root (Boolean)
+├── is_ending (Boolean)
+├── is_winning_ending (Boolean)
+└── options (JSON)
+```
+Represents individual story segments with content and branching options.
+
+### StoryJob Model
+```sql
+story_jobs
+├── id (Primary Key)
+├── job_id (String, Unique, Indexed)
+├── session_id (String, Indexed)
+├── theme (String)
+├── status (String)
+├── story_id (Integer, Nullable)
+├── error (String, Nullable)
+├── created_at (DateTime)
+└── completed_at (DateTime, Nullable)
+```
+Tracks the asynchronous story generation process from request to completion.
 
 ## 🛠️ Tech Stack
 
