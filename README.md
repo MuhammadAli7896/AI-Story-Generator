@@ -37,6 +37,21 @@ An interactive story generation application that creates dynamic, branching narr
 - Retrieve generated story using story ID
 - Navigate through story nodes based on user choices
 
+## 🛠️ Tech Stack
+
+### Backend
+- **FastAPI** - Modern, fast web framework for building APIs with Python
+- **SQLAlchemy** - SQL toolkit and ORM
+- **SQLite** - Lightweight database
+- **Python 3.11+** - Core programming language
+- **GROQ AI** - AI model integration for story generation
+
+### Frontend
+- **React** - UI library
+- **Vite** - Next generation frontend tooling
+- **Axios** - HTTP client
+- **React Router** - Navigation and routing
+
 ## 📊 Database Models
 
 ### Story Model
@@ -76,21 +91,6 @@ story_jobs
 └── completed_at (DateTime, Nullable)
 ```
 Tracks the asynchronous story generation process from request to completion.
-
-## 🛠️ Tech Stack
-
-### Backend
-- **FastAPI** - Modern, fast web framework for building APIs with Python
-- **SQLAlchemy** - SQL toolkit and ORM
-- **SQLite** - Lightweight database
-- **Python 3.11+** - Core programming language
-- **GROQ AI** - AI model integration for story generation
-
-### Frontend
-- **React** - UI library
-- **Vite** - Next generation frontend tooling
-- **Axios** - HTTP client
-- **React Router** - Navigation and routing
 
 ## 📋 Prerequisites
 
